@@ -84,24 +84,16 @@ body {
 section {
   padding: 3rem 1rem;
 }
-.info { background:#f8ecf9 ; }
-.dresscode { background: #f0e6f6; }
-.regalos { background: #fafafa; }
-.rsvp { background: #f0e6f6; }
 
-.info {
-  background: #f8ecf9;   /* mismo tono lila claro */
-  padding: 3rem 1rem;    /* más espacio arriba y abajo */
+.cuando {
+  background: #f8ecf9; /* violeta suave */
+  padding: 3rem 1rem;
 }
 
-.info h3 {
-  margin-top: 2rem;      /* separación entre los títulos ¿Cuándo? y ¿Dónde? */
+.donde {
+  background: #fff; /* blanco */
+  padding: 3rem 1rem;
 }
-
-.info h3:first-of-type {
-  margin-top: 0;         /* el primero no necesita tanto margen */
-}
-
 
 h3 {
   margin-bottom: 1rem;
