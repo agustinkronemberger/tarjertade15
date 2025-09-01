@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación Mis XV</title>
+  <link rel="stylesheet" href="estilotarjeta.css">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="hero">
+    <div class="overlay">
+      <h1 class="subtitle">MIS XV</h1>
+      <h2 class="title">UMA</h2>
+      <p class="date">30 · MAYO · 2026</p>
+    </div>
+  </header>
+
+  <section class="contador">
+    <h3>Faltan</h3>
+    <div id="countdown"></div>
+  </section>
+
+  <section class="cuando">
+    <h3>¿Cuándo?</h3>
+    <p>Sábado 30 de Mayo de 2026 - 21:00 hs</p>
+  </section>
+
+  <section class="donde">
+    <h3>¿Dónde?</h3>
+    <p>Salón Los Álamos, Rosario</p>
+    <a href="https://maps.google.com" target="_blank" class="btn">Cómo llegar</a>
+  </section>
+
+  <section class="dresscode">
+    <h3>Dress Code</h3>
+    <p>Elegante</p>
+  </section>
+
+  <section class="regalos">
+    <h3>Regalos</h3>
+    <p>Alias: <strong>uma.nutini</strong></p>
+  </section>
+
+  <section class="rsvp">
+    <h3>Confirmar asistencia</h3>
+    <a href="https://wa.me/5493410000000?text=Hola!%20Confirmo%20mi%20asistencia" target="_blank" class="btn">Confirmar por WhatsApp</a>
+  </section>
+
+  <footer>
+    <p>Con cariño, UMA</p>
+  </footer>
+
+  <script>
+    const EVENTO_ISO = "2026-05-30T21:00:00-03:00";
+    const countdown = document.getElementById("countdown");
+
+    function actualizarCountdown() {
+      const ahora = new Date();
+      const evento = new Date(EVENTO_ISO);
+      const diff = evento - ahora;
+
+      if (diff <= 0) {
+        countdown.innerHTML = "¡Hoy es el gran día!";
+        return;
+      }
+
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((diff / (1000 * 60)) % 60);
+      const segundos = Math.floor((diff / 1000) % 60);
+
+      countdown.innerHTML = `
+        <div>${dias}<span>días</span></div>
+        <div>${horas}<span>hs</span></div>
+        <div>${minutos}<span>min</span></div>
+        <div>${segundos}<span>seg</span></div>
+      `;
+    }
+
+    setInterval(actualizarCountdown, 1000);
+    actualizarCountdown();
+  </script>
+</body>
+</html>
