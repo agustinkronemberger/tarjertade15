@@ -84,8 +84,7 @@ body {
 section {
   padding: 3rem 1rem;
 }
-
-.info { background: #fafafa; }
+.info { background:#f8ecf9 ; }
 .dresscode { background: #f0e6f6; }
 .regalos { background: #fafafa; }
 .rsvp { background: #f0e6f6; }
