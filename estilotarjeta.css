@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;500&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -10,17 +12,13 @@ body {
   background: #fafafa;
   color: #333;
   text-align: center;
+  line-height: 1.6;
 }
-
-.title {
-  font-family: "Great Vibes", cursive;
-  font-size: 4rem;
-} 
 
 .hero {
   background: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1500&q=80")
-    no-repeat center center/cover;
-  height: 100vh;
+    no-repeat center center / cover;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,29 +26,32 @@ body {
 }
 
 .hero .overlay {
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(3px);  
+  background: rgba(0, 0, 0, 0.6); 
   color: #fff;
-  padding: 2rem;
-  border-radius: 1rem;
+  padding: 3rem 2rem;
+  border-radius: 1.5rem;
 }
 
 .hero .subtitle {
-  font-size: 1.5rem;
-  letter-spacing: 3px;
+  font-size: 2rem;
+  letter-spacing: 4px;
+  font-weight: 500;
+  text-transform: uppercase;
 }
 
 .hero .title {
-  font-size: 3rem;
+  font-family: "Great Vibes", cursive;
+  font-size: 4rem;
   margin: 1rem 0;
 }
 
 .hero .date {
   font-size: 1.2rem;
+  font-weight: 300;
 }
 
 .contador {
-  padding: 2rem 1rem;
+  padding: 2.5rem 1rem;
   background: #fff;
 }
 
@@ -59,50 +60,46 @@ body {
   justify-content: center;
   gap: 1rem;
   margin-top: 1rem;
+  flex-wrap: wrap;
 }
 
 #countdown div {
   background: #c59fc9;
-  color: white;
-  font-size: 1.5rem;
-  padding: 1rem;
+  color: #fff;
+  padding: 1rem 1.2rem;
   border-radius: 1rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-#countdown span {
-  font-size: 0.8rem;
-  text-transform: uppercase;
+  min-width: 72px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
 }
 
-.info, .dresscode, .regalos, .rsvp {
-  padding: 2rem 1rem;
+#countdown span {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+  font-weight: 400;
+  opacity: 0.95;
 }
+
+section {
+  padding: 3rem 1rem;
+}
+
+.info { background: #fafafa; }
+.dresscode { background: #f0e6f6; }
+.regalos { background: #fafafa; }
+.rsvp { background: #f0e6f6; }
 
 h3 {
   margin-bottom: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
+  color: #444;
 }
 
 .btn {
-  border-radius: 2rem;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-  display: inline-block;
-  padding: 0.7rem 1.2rem;
-  margin-top: 1rem;
-  background: #c59fc9;
-  color: #fff;
-  border-radius: 0.5rem;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background: #a87bab;
-}
-
-footer {
-  background: #222;
-  color: #fff;
-  padding: 1rem;
-  font-size: 0.9rem;
+   display: inline-block;
+   padding: 0.8rem 1.5rem;
+   margin-top: 1
 }
