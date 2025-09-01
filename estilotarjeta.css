@@ -6,10 +6,16 @@
 }
 
 body {
+  font-family: "Montserrat", sans-serif;
   background: #fafafa;
   color: #333;
   text-align: center;
 }
+
+.title {
+  font-family: "Great Vibes", cursive;
+  font-size: 4rem;
+} 
 
 .hero {
   background: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1500&q=80")
@@ -22,7 +28,8 @@ body {
 }
 
 .hero .overlay {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);  
   color: #fff;
   padding: 2rem;
   border-radius: 1rem;
@@ -55,16 +62,16 @@ body {
 }
 
 #countdown div {
-  background: #f0f0f0;
+  background: #c59fc9;
+  color: white;
+  font-size: 1.5rem;
   padding: 1rem;
-  border-radius: 0.5rem;
-  min-width: 60px;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
-
 #countdown span {
-  display: block;
   font-size: 0.8rem;
-  color: #555;
+  text-transform: uppercase;
 }
 
 .info, .dresscode, .regalos, .rsvp {
@@ -77,6 +84,8 @@ h3 {
 }
 
 .btn {
+  border-radius: 2rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
   display: inline-block;
   padding: 0.7rem 1.2rem;
   margin-top: 1rem;
