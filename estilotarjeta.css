@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;500&display=swap");
-
 * {
   margin: 0;
   padding: 0;
@@ -107,13 +105,14 @@ h3 {
 footer {
   background: #222;
   color: #fff;
-  padding: 3rem 1rem;   /* más espacio arriba y abajo */
-  font-size: 1.5rem;    /* texto más grande */
-  font-weight: 500;     /* un poco más grueso */
-  letter-spacing: 1px;  /* espaciado entre letras */
+  padding: 6rem 1rem;    /* mucho espacio arriba y abajo */
+  text-align: center;
 }
 
 footer p {
-  font-family: "Great Vibes", cursive;
-  font-size: 2.2rem;
+  margin: 0;
+  font-family: "Great Vibes", cursive;  /* fuente elegante */
+  font-size: 3rem;                      /* tamaño grande */
+  font-weight: normal;                  /* no bold, porque esta fuente ya es vistosa */
+  letter-spacing: 1px;
 }
