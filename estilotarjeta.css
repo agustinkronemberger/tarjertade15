@@ -90,6 +90,20 @@ section {
 .regalos { background: #fafafa; }
 .rsvp { background: #f0e6f6; }
 
+.info {
+  background: #f8ecf9;   /* mismo tono lila claro */
+  padding: 3rem 1rem;    /* más espacio arriba y abajo */
+}
+
+.info h3 {
+  margin-top: 2rem;      /* separación entre los títulos ¿Cuándo? y ¿Dónde? */
+}
+
+.info h3:first-of-type {
+  margin-top: 0;         /* el primero no necesita tanto margen */
+}
+
+
 h3 {
   margin-bottom: 1rem;
   font-size: 1.8rem;
@@ -116,3 +130,4 @@ footer p {
   font-weight: normal;                  /* no bold, porque esta fuente ya es vistosa */
   letter-spacing: 1px;
 }
+
