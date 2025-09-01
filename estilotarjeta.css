@@ -102,10 +102,21 @@ h3 {
 }
 
 .btn {
-   display: inline-block;
-   padding: 0.8rem 1.5rem;
-   margin-top: 1
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  margin-top: 1rem;
+  background: #6a1b9a;
+  color: #fff;
+  border-radius: 0.8rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s ease;
 }
+
+.btn:hover {
+  background: #4a0072;
+}
+
 
 footer {
   background: #222;
@@ -122,18 +133,14 @@ footer p {
   letter-spacing: 1px;
 }
 
-.dresscode {
-  background: #f8ecf9; /* violeta suave */
-  padding: 3rem 1rem;
+.dresscode h3, .dresscode p {
+  color: #6a1b9a;
 }
 
-.regalos {
-  background: #fff;
-  padding: 3rem 1rem;
+.regalos h3, .regalos p {
+  color: #333;
 }
 
-.rsvp {
-  background: #f8ecf9;
-  padding: 3rem 1rem;
+.rsvp h3, .rsvp p {
+  color: #6a1b9a;
 }
-
