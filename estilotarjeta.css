@@ -122,3 +122,18 @@ footer p {
   letter-spacing: 1px;
 }
 
+.dresscode {
+  background: #f8ecf9; /* violeta suave */
+  padding: 3rem 1rem;
+}
+
+.regalos {
+  background: #fff;
+  padding: 3rem 1rem;
+}
+
+.rsvp {
+  background: #f8ecf9;
+  padding: 3rem 1rem;
+}
+
