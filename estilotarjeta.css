@@ -246,3 +246,9 @@ footer p {
   from { opacity: 0; transform: translateY(30px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+/* 🚫 Forzar que no aparezcan brillos */
+.hero .overlay::after {
+  content: none !important;
+  display: none !important;
+}
