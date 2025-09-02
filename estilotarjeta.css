@@ -51,6 +51,7 @@ body {
 
 /* -------- CONTADOR -------- */
 /* -------- CONTADOR -------- */
+
 .contador {
   padding: 2.5rem 1rem;
   background: #fff;
@@ -74,12 +75,13 @@ body {
   border: 2px solid #6a1b9a;
   box-shadow: 0 4px 12px rgba(106, 27, 154, 0.25);
   text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #fff;   /* 🔥 todos los textos en blanco */
 }
 
 /* números */
 #countdown div strong {
-  color: #fff;   /* números en blanco */
+  color: #fff;
   font-size: 1.6rem;
   display: block;
 }
@@ -91,8 +93,14 @@ body {
   text-transform: uppercase;
   margin-top: 0.25rem;
   font-weight: 500;
-  color: #fff;   /* texto también blanco */
+  color: #fff;
   opacity: 0.9;
+}
+
+/* efecto hover en cada bloque */
+#countdown div:hover {
+  transform: translateY(-8px); /* 🔥 se levanta */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
 }
 
 
