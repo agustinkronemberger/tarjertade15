@@ -55,62 +55,52 @@
   <audio id="bg-music" autoplay loop muted>
   <source src="alma.mp3" type="audio/mpeg">
   Tu navegador no soporta audio HTML5.
- </audio>
- <button id="music-btn" class="music-btn">🔊</button>
+</audio>
+<button id="music-btn" class="music-btn">▶️</button>
 
-  <script>
-    const EVENTO_ISO = "2026-05-30T21:00:00-03:00";
-    const countdown = document.getElementById("countdown");
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const music = document.getElementById('bg-music');
+    const btn   = document.getElementById('music-btn');
 
-    function actualizarCountdown() {
-      const ahora = new Date();
-      const evento = new Date(EVENTO_ISO);
-      const diff = evento - ahora;
+    // Detectar si es móvil
+    const esMovil = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-      if (diff <= 0) {
-        countdown.innerHTML = "¡Hoy es el gran día!";
-        return;
-      }
-
-      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutos = Math.floor((diff / (1000 * 60)) % 60);
-      const segundos = Math.floor((diff / 1000) % 60);
-
-      countdown.innerHTML = `
-        <div>${dias}<span>días</span></div>
-        <div>${horas}<span>hs</span></div>
-        <div>${minutos}<span>min</span></div>
-        <div>${segundos}<span>seg</span></div>
-      `;
-    }
-
-    setInterval(actualizarCountdown, 1000);
-    actualizarCountdown();
-
-    const music = document.getElementById("bg-music");
-  const btn = document.getElementById("music-btn");
-
-  // Primera interacción del usuario → desmutea la canción
-  document.body.addEventListener("click", () => {
-    if (music.muted) {
+    if (!esMovil) {
+      // En computadora → intentamos desmutear solo
       music.muted = false;
-      music.play();
-    }
-  }, { once: true });
-
-  // Control del botón
-  btn.addEventListener("click", () => {
-    if (music.paused) {
-      music.play();
-      btn.textContent = "🔊"; // Sonando
+      music.play().then(() => {
+        btn.textContent = '⏸️';
+      }).catch(e => {
+        console.warn('Autoplay bloqueado en PC, esperando interacción', e);
+      });
     } else {
-      music.pause();
-      btn.textContent = "▶️"; // Pausado
+      // En celular → esperar primer interacción
+      const activarMusica = () => {
+        if (music.muted) music.muted = false;
+        music.play().then(() => btn.textContent = '⏸️')
+                    .catch(e => console.warn('Bloqueado en móvil:', e));
+        document.removeEventListener('click', activarMusica);
+        document.removeEventListener('touchstart', activarMusica);
+      };
+      document.addEventListener('click', activarMusica, { once:true });
+      document.addEventListener('touchstart', activarMusica, { once:true });
     }
-  });
 
-  </script>
+    // Toggle manual con botón
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (music.paused) {
+        if (music.muted) music.muted = false;
+        music.play().then(() => btn.textContent = '⏸️');
+      } else {
+        music.pause();
+        btn.textContent = '▶️';
+      }
+    });
+  });
+</script>
+
 
 </body>
 </html>
