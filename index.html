@@ -29,7 +29,7 @@
       padding: 1rem 2rem;
       background: white;
       color: #6a1b9a;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       border-radius: 1rem;
       border: none;
       cursor: pointer;
@@ -51,12 +51,25 @@
     <button id="entrar-btn">Entrar</button>
   </div>
 
+  <!-- Audio oculto que arranca con el click -->
+  <audio id="bg-music" loop>
+    <source src="alma.mp3" type="audio/mpeg">
+  </audio>
+
   <script>
-    document.getElementById("entrar-btn").addEventListener("click", () => {
-      // Guardamos permiso para reproducir música en la otra página
-      localStorage.setItem("permitirMusica", "true");
-      // Redirigimos a la invitación
-      window.location.href = "invitacion.html";
+    const btn = document.getElementById("entrar-btn");
+    const music = document.getElementById("bg-music");
+
+    btn.addEventListener("click", () => {
+      music.muted = false;
+      music.play().then(() => {
+        // Si arrancó, guardamos estado y redirigimos
+        localStorage.setItem("musicaSonando", "true");
+        window.location.href = "invitacion.html";
+      }).catch(err => {
+        alert("Tu navegador bloqueó el inicio de la música. Toca el botón de play en la invitación.");
+        window.location.href = "invitacion.html";
+      });
     });
   </script>
 </body>
