@@ -33,6 +33,7 @@
       font-size: 1.5rem;
       border-radius: 1rem;
       transition: 0.3s;
+      cursor: pointer;
     }
     a:hover {
       background: #f3e5f5;
@@ -46,17 +47,16 @@
 <body>
   <div class="container">
     <h1>Mis XV - UMA</h1>
-    <a href="invitacion.html">Entrar</a>
+    <a id="entrar-btn">Entrar</a>
   </div>
-  
-  <a href="invitacion.html" id="entrar">Entrar</a>
 
-<script>
-  document.getElementById("entrar").addEventListener("click", (e) => {
-    // Guardar el permiso en localStorage
-    localStorage.setItem("permitirMusica", "true");
-  });
-</script>
-
+  <script>
+    document.getElementById("entrar-btn").addEventListener("click", () => {
+      // Guardamos permiso para reproducir música en la otra página
+      localStorage.setItem("permitirMusica", "true");
+      // Redirigimos a la invitación
+      window.location.href = "invitacion.html";
+    });
+  </script>
 </body>
 </html>
