@@ -13,14 +13,16 @@ body {
   line-height: 1.6;
 }
 
-/* -------- HERO -------- */
-.hero {
+/* -------- PORTADA-------- */
+.portada {
   background: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1500&q=80")
     no-repeat center center / cover;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  color: #fff;
   position: relative;
 }
 
@@ -220,14 +222,33 @@ footer p {
 
 
 
-/* -------- HERO (mejorado) -------- */
-.hero::before {
+/* -------- PORTADA (mejorado) -------- */
+.portada::before {
   content: "";
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.5); 
   z-index: 0;              /* 🔥 que quede detrás */
   pointer-events: none;    /* 🔥 deja pasar clics */
+}
+
+.portada h1 {
+  font-family: "Great Vibes", cursive;
+  font-size: 5rem;
+  z-index: 1;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+}
+
+.portada p {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  z-index: 1;
+}
+
+
+.portada .btn {
+  margin-top: 2rem;
+  z-index: 1;
 }
 
 .hero .overlay {

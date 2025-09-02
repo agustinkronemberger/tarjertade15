@@ -63,11 +63,11 @@
 <body>
 
   <!-- Portada -->
-  <div id="portada">
-    <h1>Mis XV Alma </h1>
-    <p>Quiero que seas parte de este momento</p>
-    <button id="entrar-btn">Entrar</button>
-  </div>
+ <section class="portada">
+  <h1>Mis XV Alma</h1>
+  <p>Quiero que seas parte de este momento</p>
+  <a href="#home" class="btn">Entrar</a>
+ </section>
 
   <!-- Contenido de la invitación -->
   <div id="invitacion" style="display:none;">
@@ -121,60 +121,70 @@
   </audio>
   <button id="music-btn" style="display:none;">▶️</button>
 
+  
 <script>
-  // Entrar → iniciar música + mostrar invitación
-  document.getElementById("entrar-btn").addEventListener("click", () => {
-    const portada   = document.getElementById("portada");
-    const invitacion= document.getElementById("invitacion");
-    const music     = document.getElementById("bg-music");
-    const btn       = document.getElementById("music-btn");
+  document.addEventListener("DOMContentLoaded", () => {
+  const portada = document.getElementById("portada");
+  const invitacion = document.getElementById("invitacion");
+  const btnEntrar = document.querySelector(".portada .btn");
+  const musicBtn = document.getElementById("music-btn");
+  const music = document.getElementById("bg-music");
 
-    portada.style.display = "none";
-    invitacion.style.display = "block";
-    btn.style.display = "flex";
-
-    music.play().then(() => {
-      btn.textContent = "⏸️";
-    }).catch(err => {
-      console.log("No se pudo reproducir automáticamente:", err);
-      btn.textContent = "▶️";
-    });
-  });
-
-  // Botón música
-  document.getElementById("music-btn").addEventListener("click", () => {
-    const music = document.getElementById("bg-music");
-    const btn   = document.getElementById("music-btn");
-
-    if (music.paused) {
-      music.play();
-      btn.textContent = "⏸️";
-    } else {
+  // 🎵 control música
+  let isPlaying = false;
+  musicBtn.addEventListener("click", () => {
+    if (isPlaying) {
       music.pause();
-      btn.textContent = "▶️";
+      isPlaying = false;
+      musicBtn.textContent = "🎵";
+    } else {
+      music.play();
+      isPlaying = true;
+      musicBtn.textContent = "⏸️";
     }
   });
 
-  // --- Contador ---
-  const countdown = document.getElementById("countdown");
-  const targetDate = new Date("Nov 22, 2025 21:00:00").getTime();
+  // 🚀 botón entrar
+  btnEntrar.addEventListener("click", (e) => {
+    e.preventDefault();
+    portada.style.display = "none";
+    invitacion.style.display = "block";
+    music.play();
+    isPlaying = true;
+    musicBtn.textContent = "⏸️";
+  });
+
+  // 🕒 contador
+  const eventDate = new Date("2025-12-20T20:00:00").getTime();
+  const diasEl = document.getElementById("dias");
+  const horasEl = document.getElementById("horas");
+  const minutosEl = document.getElementById("minutos");
+  const segundosEl = document.getElementById("segundos");
 
   setInterval(() => {
     const now = new Date().getTime();
-    const distance = targetDate - now;
+    const diff = eventDate - now;
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    if (diff <= 0) {
+      diasEl.textContent = "00";
+      horasEl.textContent = "00";
+      minutosEl.textContent = "00";
+      segundosEl.textContent = "00";
+      return;
+    }
 
-    countdown.innerHTML = `
-      <div><strong>${days}</strong><span>días</span></div>
-      <div><strong>${hours}</strong><span>horas</span></div>
-      <div><strong>${minutes}</strong><span>minutos</span></div>
-      <div><strong>${seconds}</strong><span>segundos</span></div>
-    `;
+    const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((diff % (1000 * 60)) / 1000);
+
+    diasEl.textContent = dias.toString().padStart(2, "0");
+    horasEl.textContent = horas.toString().padStart(2, "0");
+    minutosEl.textContent = minutos.toString().padStart(2, "0");
+    segundosEl.textContent = segundos.toString().padStart(2, "0");
   }, 1000);
+});
+
 </script>
 
 
