@@ -64,14 +64,21 @@ body {
 }
 
 #countdown div {
-  background: #c59fc9;
-  color: #fff;
+  background: #fff;
+  color: #6a1b9a;
   padding: 1rem 1.2rem;
-  border-radius: 1rem;
+  border-radius: 1rem;                  /* 🔹 Bordes redondeados */
+  border: 2px solid #c59fc9;            /* 🔹 Contorno violeta suave */
   min-width: 72px;
   font-size: 1.4rem;
   font-weight: 700;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* 🔹 Sombra sutil */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#countdown div:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(106, 27, 154, 0.25);
 }
 
 #countdown span {
@@ -80,7 +87,8 @@ body {
   text-transform: uppercase;
   margin-top: 0.25rem;
   font-weight: 400;
-  opacity: 0.95;
+  opacity: 0.9;
+  color: #6a1b9a;
 }
 
 /* -------- SECCIONES -------- */
@@ -163,6 +171,7 @@ footer p {
   letter-spacing: 1px;
 }
 
+/* -------- BOTÓN DE MÚSICA -------- */
 .music-btn {
   position: fixed;
   bottom: 20px;
