@@ -162,3 +162,24 @@ footer p {
   font-weight: normal;
   letter-spacing: 1px;
 }
+
+.music-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #6a1b9a;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: background 0.3s ease;
+  z-index: 9999;
+}
+
+.music-btn:hover {
+  background: #4a0072;
+}
