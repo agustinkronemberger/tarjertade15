@@ -288,6 +288,30 @@ footer p {
   }
 }
 
+/* -------- RESPONSIVE: CONTADOR EN CELULAR -------- */
+@media (max-width: 600px) {
+  #countdown {
+    flex-wrap: nowrap;          /* 🔥 evita que baje de línea */
+    justify-content: space-around;
+    gap: 0.4rem;
+  }
+
+  #countdown div {
+    min-width: 60px;            /* 🔥 más chico */
+    padding: 0.6rem 0.5rem;
+    font-size: 1rem;
+    border-radius: 0.6rem;
+  }
+
+  #countdown div strong {
+    font-size: 1.2rem;          /* números más chicos */
+  }
+
+  #countdown span {
+    font-size: 0.6rem;          /* texto más chico */
+  }
+}
+
 
 
 
