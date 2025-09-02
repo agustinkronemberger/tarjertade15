@@ -52,6 +52,8 @@ body {
 /* -------- CONTADOR -------- */
 /* -------- CONTADOR -------- */
 
+/* -------- CONTADOR -------- */
+
 .contador {
   padding: 2.5rem 1rem;
   background: #fff;
@@ -66,7 +68,7 @@ body {
 }
 
 #countdown div {
-  background: #6a1b9a;   /* fondo violeta */
+  background: #6a1b9a;
   padding: 1rem 1.2rem;
   border-radius: 1rem;
   min-width: 80px;
@@ -76,31 +78,31 @@ body {
   box-shadow: 0 4px 12px rgba(106, 27, 154, 0.25);
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  color: #fff;   /* 🔥 todos los textos en blanco */
+  color: #fff !important;   /* 🔥 fuerza todo a blanco */
 }
 
 /* números */
 #countdown div strong {
-  color: #fff;
+  color: #fff !important;   /* 🔥 números blancos */
   font-size: 1.6rem;
   display: block;
 }
 
 /* etiquetas (días, horas, minutos, segundos) */
-#countdown span {
+#countdown div span {
   display: block;
   font-size: 0.75rem;
   text-transform: uppercase;
   margin-top: 0.25rem;
   font-weight: 500;
-  color: #fff;
+  color: #fff !important;   /* 🔥 etiquetas blancas */
   opacity: 0.9;
 }
 
-/* efecto hover en cada bloque */
+/* efecto hover */
 #countdown div:hover {
-  transform: translateY(-8px); /* 🔥 se levanta */
-  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+  transform: translateY(-8px);   /* 🔥 se levanta */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 
