@@ -48,5 +48,15 @@
     <h1>Mis XV - UMA</h1>
     <a href="invitacion.html">Entrar</a>
   </div>
+  
+  <a href="invitacion.html" id="entrar">Entrar</a>
+
+<script>
+  document.getElementById("entrar").addEventListener("click", (e) => {
+    // Guardar el permiso en localStorage
+    localStorage.setItem("permitirMusica", "true");
+  });
+</script>
+
 </body>
 </html>

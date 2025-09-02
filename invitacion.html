@@ -52,53 +52,44 @@
     <p>Con cariño, UMA</p>
   </footer>
 
-<audio id="bg-music" autoplay loop muted playsinline>
-  <source src="alma.mp3" type="audio/mpeg">
-  Tu navegador no soporta audio HTML5.
-</audio>
-<button id="music-btn" class="music-btn">▶️</button>
+  <!-- Audio de fondo -->
+  <audio id="bg-music" autoplay loop muted playsinline>
+    <source src="alma.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5.
+  </audio>
+  <button id="music-btn" class="music-btn">▶️</button>
 
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-    const music = document.getElementById('bg-music');
-    const btn   = document.getElementById('music-btn');
-    const esMovil = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const music = document.getElementById('bg-music');
+      const btn   = document.getElementById('music-btn');
 
-    if (!esMovil) {
-      // En PC → intentamos desmutear apenas carga
-      music.muted = false;
-      music.play().then(() => {
-        btn.textContent = '⏸️';
-      }).catch(() => {
-        console.warn('Autoplay bloqueado: se activará al hacer click.');
-      });
-    } else {
-      // En móvil → esperar interacción
-      const activarMusica = () => {
-        if (music.muted) music.muted = false;
-        music.play().then(() => btn.textContent = '⏸️');
-        document.removeEventListener('click', activarMusica);
-        document.removeEventListener('touchstart', activarMusica);
-      };
-      document.addEventListener('click', activarMusica, { once:true });
-      document.addEventListener('touchstart', activarMusica, { once:true });
-    }
+      // Revisar si el usuario vino desde la página de entrada
+      const permiso = localStorage.getItem("permitirMusica");
 
-    // Botón manual
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (music.paused) {
+      if (permiso === "true") {
+        localStorage.removeItem("permitirMusica"); // limpiar para no repetir
         music.muted = false;
-        music.play().then(() => btn.textContent = '⏸️');
-      } else {
-        music.pause();
-        btn.textContent = '▶️';
+        music.play().then(() => {
+          btn.textContent = '⏸️';
+        }).catch(e => {
+          console.warn('No se pudo reproducir automáticamente:', e);
+        });
       }
+
+      // Botón manual para pausar/reanudar
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (music.paused) {
+          music.muted = false;
+          music.play().then(() => btn.textContent = '⏸️');
+        } else {
+          music.pause();
+          btn.textContent = '▶️';
+        }
+      });
     });
-  });
-</script>
-
-
+  </script>
 </body>
 </html>
 
