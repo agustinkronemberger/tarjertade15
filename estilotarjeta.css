@@ -223,16 +223,6 @@ footer p {
   overflow: hidden;
 }
 
-/* ✨ Brillos sutiles */
-.hero .overlay::after {
-  content: "✨ ✨ ✨";
-  position: absolute;
-  bottom: 10px;
-  right: 15px;
-  font-size: 1.2rem;
-  opacity: 0.8;
-  animation: sparkle 3s infinite alternate;
-}
 
 /* Animación de brillos */
 @keyframes sparkle {
