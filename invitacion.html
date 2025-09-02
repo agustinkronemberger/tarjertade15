@@ -81,24 +81,36 @@
 
     setInterval(actualizarCountdown, 1000);
     actualizarCountdown();
-      const music = document.getElementById("bg-music");
-   const btn = document.getElementById("music-btn");
+    
+    const music = document.getElementById("bg-music");
+  const btn = document.getElementById("music-btn");
 
-   btn.addEventListener("click", () => {
+  // Primera interacción del usuario → desmutea la canción
+  document.body.addEventListener("click", () => {
+    if (music.muted) {
+      music.muted = false;
+      music.play();
+    }
+  }, { once: true });
+
+  // Control del botón
+  btn.addEventListener("click", () => {
     if (music.paused) {
       music.play();
-      btn.textContent = "⏸️"; // Pausar
+      btn.textContent = "🔊"; // Sonando
     } else {
       music.pause();
-      btn.textContent = "▶️"; // Reproducir
+      btn.textContent = "▶️"; // Pausado
     }
   });
-  </script>
 
- <audio id="bg-music" autoplay loop>
+  </script>
+ audio id="bg-music" autoplay loop muted>
   <source src="alma.mp3" type="audio/mpeg">
- </audio>
- <button id="music-btn" class="music-btn">⏸️</button>
+  Tu navegador no soporta audio HTML5.
+ /audio>
+
+ button id="music-btn" class="music-btn">🔊</button>
 </body>
 </html>
 
