@@ -6,7 +6,6 @@
   <title>Invitación Mis XV</title>
   <link rel="stylesheet" href="estilotarjeta.css">
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
 <body>
   <header class="hero">
@@ -53,7 +52,7 @@
   </footer>
 
   <!-- Audio de fondo -->
-  <audio id="bg-music" autoplay loop muted playsinline>
+  <audio id="bg-music" loop playsinline>
     <source src="alma.mp3" type="audio/mpeg">
     Tu navegador no soporta audio HTML5.
   </audio>
@@ -73,7 +72,7 @@
         music.play().then(() => {
           btn.textContent = '⏸️';
         }).catch(e => {
-          console.warn('No se pudo reproducir automáticamente:', e);
+          console.warn('Autoplay bloqueado en móvil, esperar interacción manual:', e);
         });
       }
 
@@ -92,8 +91,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
