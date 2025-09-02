@@ -51,8 +51,8 @@
   <footer>
     <p>Con cariño, UMA</p>
   </footer>
-  
-  <audio id="bg-music" autoplay loop muted>
+
+<audio id="bg-music" autoplay loop muted playsinline>
   <source src="alma.mp3" type="audio/mpeg">
   Tu navegador no soporta audio HTML5.
 </audio>
@@ -62,24 +62,21 @@
   window.addEventListener('DOMContentLoaded', () => {
     const music = document.getElementById('bg-music');
     const btn   = document.getElementById('music-btn');
-
-    // Detectar si es móvil
     const esMovil = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
     if (!esMovil) {
-      // En computadora → intentamos desmutear solo
+      // En PC → intentamos desmutear apenas carga
       music.muted = false;
       music.play().then(() => {
         btn.textContent = '⏸️';
-      }).catch(e => {
-        console.warn('Autoplay bloqueado en PC, esperando interacción', e);
+      }).catch(() => {
+        console.warn('Autoplay bloqueado: se activará al hacer click.');
       });
     } else {
-      // En celular → esperar primer interacción
+      // En móvil → esperar interacción
       const activarMusica = () => {
         if (music.muted) music.muted = false;
-        music.play().then(() => btn.textContent = '⏸️')
-                    .catch(e => console.warn('Bloqueado en móvil:', e));
+        music.play().then(() => btn.textContent = '⏸️');
         document.removeEventListener('click', activarMusica);
         document.removeEventListener('touchstart', activarMusica);
       };
@@ -87,11 +84,11 @@
       document.addEventListener('touchstart', activarMusica, { once:true });
     }
 
-    // Toggle manual con botón
+    // Botón manual
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       if (music.paused) {
-        if (music.muted) music.muted = false;
+        music.muted = false;
         music.play().then(() => btn.textContent = '⏸️');
       } else {
         music.pause();
