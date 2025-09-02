@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Invitación Mis XV - UMA</title>
+  <title>Invitación Mis XV - Alma</title>
   <link rel="stylesheet" href="estilotarjeta.css">
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
   <style>
@@ -78,10 +78,10 @@
     </header>
 
     <section class="contador">
-      <h3>Faltan</h3>
-      <div id="countdown"></div>
+     <h3>Faltan</h3>
+     <div id="countdown"></div>
     </section>
-
+    
     <section class="cuando">
       <h3>¿Cuándo?</h3>
       <p>Sabado 22 de Noviembre 21:00 hs - 5hs</p>
@@ -156,24 +156,25 @@
 
     // --- Contador ---
     const countdown = document.getElementById("countdown");
-    const targetDate = new Date("May 30, 2026 21:00:00").getTime();
+   const targetDate = new Date("Nov 22, 2025 21:00:00").getTime();
 
-    setInterval(() => {
-      const now = new Date().getTime();
-      const diff = targetDate - now;
+   setInterval(() => {
+     const now = new Date().getTime();
+     const distance = targetDate - now;
 
-      if (diff <= 0) {
-        countdown.innerHTML = "¡Hoy es el gran día!";
-        return;
-      }
+     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+     countdown.innerHTML = `
+      <div>${days}<span>días</span></div>
+      <div>${hours}<span>horas</span></div>
+      <div>${minutes}<span>minutos</span></div>
+      <div>${seconds}<span>segundos</span></div>
+    `;
+  }, 1000);
 
-      countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-    }, 1000);
   </script>
 
 </body>
