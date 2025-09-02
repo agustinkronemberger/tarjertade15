@@ -27,7 +27,7 @@
       font-size: 3rem;
       margin-bottom: 2rem;
     }
-    #entrar-btn {
+    #portada .btn {
       padding: 1rem 2rem;
       background: white;
       color: #6a1b9a;
@@ -37,8 +37,9 @@
       cursor: pointer;
       transition: 0.3s;
       font-family: "Great Vibes", cursive;
+      text-decoration: none;
     }
-    #entrar-btn:hover {
+    #portada .btn:hover {
       background: #f3e5f5;
     }
 
@@ -62,14 +63,14 @@
 </head>
 <body>
 
-  <!-- Portada -->
- <section class="portada">
-  <h1>Mis XV Alma</h1>
-  <p>Quiero que seas parte de este momento</p>
-  <a href="#home" class="btn">Entrar</a>
- </section>
+  <!-- ✅ Portada con ID -->
+  <section id="portada">
+    <h1>Mis XV Alma</h1>
+    <p>Quiero que seas parte de este momento</p>
+    <a href="#home" class="btn">Entrar</a>
+  </section>
 
-  <!-- Contenido de la invitación -->
+  <!-- ✅ Contenido de la invitación -->
   <div id="invitacion" style="display:none;">
     <header class="hero">
       <div class="overlay">
@@ -79,13 +80,18 @@
     </header>
 
     <section class="contador">
-     <h3>Faltan</h3>
-     <div id="countdown"></div>
+      <h3>Faltan</h3>
+      <div id="countdown">
+        <div><strong id="dias">00</strong><span>Días</span></div>
+        <div><strong id="horas">00</strong><span>Horas</span></div>
+        <div><strong id="minutos">00</strong><span>Minutos</span></div>
+        <div><strong id="segundos">00</strong><span>Segundos</span></div>
+      </div>
     </section>
     
     <section class="cuando">
       <h3>¿Cuándo?</h3>
-      <p>Sabado 22 de Noviembre 21:00 hs - 5hs</p>
+      <p>Sábado 22 de Noviembre 21:00 hs - 5hs</p>
     </section>
 
     <section class="donde">
@@ -114,79 +120,78 @@
     </footer>
   </div>
 
-  <!-- Audio -->
+  <!-- ✅ Audio -->
   <audio id="bg-music" loop>
     <source src="alma.mp3" type="audio/mpeg">
     Tu navegador no soporta audio HTML5.
   </audio>
   <button id="music-btn" style="display:none;">▶️</button>
 
-  
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-  const portada = document.getElementById("portada");
-  const invitacion = document.getElementById("invitacion");
-  const btnEntrar = document.querySelector(".portada .btn");
-  const musicBtn = document.getElementById("music-btn");
-  const music = document.getElementById("bg-music");
+    const portada = document.getElementById("portada");
+    const invitacion = document.getElementById("invitacion");
+    const btnEntrar = document.querySelector("#portada .btn");
+    const musicBtn = document.getElementById("music-btn");
+    const music = document.getElementById("bg-music");
 
-  // 🎵 control música
-  let isPlaying = false;
-  musicBtn.addEventListener("click", () => {
-    if (isPlaying) {
-      music.pause();
-      isPlaying = false;
-      musicBtn.textContent = "🎵";
-    } else {
+    // 🎵 control música
+    let isPlaying = false;
+    musicBtn.addEventListener("click", () => {
+      if (isPlaying) {
+        music.pause();
+        isPlaying = false;
+        musicBtn.textContent = "▶️";
+      } else {
+        music.play();
+        isPlaying = true;
+        musicBtn.textContent = "⏸️";
+      }
+    });
+
+    // 🚀 botón entrar
+    btnEntrar.addEventListener("click", (e) => {
+      e.preventDefault();
+      portada.style.display = "none";
+      invitacion.style.display = "block";
       music.play();
       isPlaying = true;
       musicBtn.textContent = "⏸️";
-    }
+      musicBtn.style.display = "flex";
+    });
+
+    // 🕒 contador
+    const eventDate = new Date("2025-12-20T20:00:00").getTime();
+    const diasEl = document.getElementById("dias");
+    const horasEl = document.getElementById("horas");
+    const minutosEl = document.getElementById("minutos");
+    const segundosEl = document.getElementById("segundos");
+
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = eventDate - now;
+
+      if (diff <= 0) {
+        diasEl.textContent = "00";
+        horasEl.textContent = "00";
+        minutosEl.textContent = "00";
+        segundosEl.textContent = "00";
+        return;
+      }
+
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((diff % (1000 * 60)) / 1000);
+
+      diasEl.textContent = dias.toString().padStart(2, "0");
+      horasEl.textContent = horas.toString().padStart(2, "0");
+      minutosEl.textContent = minutos.toString().padStart(2, "0");
+      segundosEl.textContent = segundos.toString().padStart(2, "0");
+    }, 1000);
   });
-
-  // 🚀 botón entrar
-  btnEntrar.addEventListener("click", (e) => {
-    e.preventDefault();
-    portada.style.display = "none";
-    invitacion.style.display = "block";
-    music.play();
-    isPlaying = true;
-    musicBtn.textContent = "⏸️";
-  });
-
-  // 🕒 contador
-  const eventDate = new Date("2025-12-20T20:00:00").getTime();
-  const diasEl = document.getElementById("dias");
-  const horasEl = document.getElementById("horas");
-  const minutosEl = document.getElementById("minutos");
-  const segundosEl = document.getElementById("segundos");
-
-  setInterval(() => {
-    const now = new Date().getTime();
-    const diff = eventDate - now;
-
-    if (diff <= 0) {
-      diasEl.textContent = "00";
-      horasEl.textContent = "00";
-      minutosEl.textContent = "00";
-      segundosEl.textContent = "00";
-      return;
-    }
-
-    const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const segundos = Math.floor((diff % (1000 * 60)) / 1000);
-
-    diasEl.textContent = dias.toString().padStart(2, "0");
-    horasEl.textContent = horas.toString().padStart(2, "0");
-    minutosEl.textContent = minutos.toString().padStart(2, "0");
-    segundosEl.textContent = segundos.toString().padStart(2, "0");
-  }, 1000);
-});
-
 </script>
 
-
 </body>
-</html> 
+</html>
+
