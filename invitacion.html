@@ -52,40 +52,34 @@
   </footer>
 
   <!-- Audio de fondo -->
-  <audio id="bg-music" loop muted playsinline>
-    <source src="alma.mp3" type="audio/mpeg">
-    Tu navegador no soporta audio HTML5.
-  </audio>
-  <button id="music-btn" class="music-btn">▶️</button>
+<audio id="bg-music" loop muted playsinline>
+  <source src="alma.mp3" type="audio/mpeg">
+</audio>
+<button id="music-btn" class="music-btn">▶️</button>
 
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const music = document.getElementById('bg-music');
-      const btn   = document.getElementById('music-btn');
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const music = document.getElementById('bg-music');
+    const btn   = document.getElementById('music-btn');
 
-      // Ver si la música fue iniciada en index.html
-      const permiso = localStorage.getItem("musicaSonando");
-      if (permiso === "true") {
-        localStorage.removeItem("musicaSonando");
+    if (localStorage.getItem("musicaSonando") === "true") {
+      localStorage.removeItem("musicaSonando");
+      music.muted = false;
+      music.play().then(() => {
+        btn.textContent = '⏸️';
+      }).catch(e => console.warn("No se pudo seguir la música:", e));
+    }
+
+    btn.addEventListener('click', () => {
+      if (music.paused) {
         music.muted = false;
-        music.play().then(() => {
-          btn.textContent = '⏸️';
-        }).catch(err => {
-          console.warn("No se pudo reproducir automáticamente:", err);
-        });
+        music.play().then(() => btn.textContent = '⏸️');
+      } else {
+        music.pause();
+        btn.textContent = '▶️';
       }
-
-      // Botón manual para pausar/reanudar
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (music.paused) {
-          music.muted = false;
-          music.play().then(() => btn.textContent = '⏸️');
-        } else {
-          music.pause();
-          btn.textContent = '▶️';
-        }
-      });
+    });
+  });
 
       // --- Contador regresivo ---
       const countdownEl = document.getElementById("countdown");
@@ -110,7 +104,6 @@
 
       actualizarContador();
       setInterval(actualizarContador, 1000);
-    });
   </script>
 </body>
 </html>

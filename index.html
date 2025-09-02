@@ -17,15 +17,9 @@
       font-family: "Great Vibes", cursive;
       text-align: center;
     }
-    .container {
-      animation: fadein 2s ease;
-    }
-    h1 {
-      font-size: 4rem;
-      margin-bottom: 2rem;
-    }
+    .container { animation: fadein 2s ease; }
+    h1 { font-size: 4rem; margin-bottom: 2rem; }
     button {
-      display: inline-block;
       padding: 1rem 2rem;
       background: white;
       color: #6a1b9a;
@@ -36,13 +30,8 @@
       transition: 0.3s;
       font-family: "Great Vibes", cursive;
     }
-    button:hover {
-      background: #f3e5f5;
-    }
-    @keyframes fadein {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+    button:hover { background: #f3e5f5; }
+    @keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
   </style>
 </head>
 <body>
@@ -51,23 +40,22 @@
     <button id="entrar-btn">Entrar</button>
   </div>
 
-  <!-- Audio oculto que arranca con el click -->
-  <audio id="bg-music" loop>
+  <!-- Audio de fondo (arranca acá mismo en el click) -->
+  <audio id="intro-music" loop>
     <source src="alma.mp3" type="audio/mpeg">
   </audio>
 
   <script>
-    const btn = document.getElementById("entrar-btn");
-    const music = document.getElementById("bg-music");
+    document.getElementById("entrar-btn").addEventListener("click", () => {
+      const audio = document.getElementById("intro-music");
 
-    btn.addEventListener("click", () => {
-      music.muted = false;
-      music.play().then(() => {
-        // Si arrancó, guardamos estado y redirigimos
+      // reproducimos acá mismo en el click
+      audio.play().then(() => {
         localStorage.setItem("musicaSonando", "true");
+        // redirigir recién después
         window.location.href = "invitacion.html";
       }).catch(err => {
-        alert("Tu navegador bloqueó el inicio de la música. Toca el botón de play en la invitación.");
+        console.warn("Error al reproducir en index:", err);
         window.location.href = "invitacion.html";
       });
     });
