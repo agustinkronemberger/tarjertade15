@@ -1,8 +1,8 @@
+/* Reseteo básico */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Georgia", serif;
 }
 
 body {
@@ -13,57 +13,96 @@ body {
   line-height: 1.6;
 }
 
-/* -------- PORTADA-------- */
-.portada {
-  background: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1500&q=80")
-    no-repeat center center / cover;
+/* PORTADA */
+#portada {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #6a1b9a, #c59fc9);
+  color: white;
+  font-family: "Great Vibes", cursive;
+  text-align: center;
+  z-index: 9999;
+}
+
+#portada h1 {
+  font-size: 4rem;
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+}
+
+#portada h1:nth-child(1) { animation-delay: 0s; }
+#portada h1:nth-child(2) { animation-delay: 0.8s; }
+#portada h1:nth-child(3) { animation-delay: 1.6s; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+#entrar-btn {
+  padding: 1rem 2rem;
+  background: white;
+  color: #6a1b9a;
+  font-size: 1.5rem;
+  border-radius: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-family: "Great Vibes", cursive;
+  text-decoration: none;
+  margin-top: 2rem;
+
+  opacity: 0;
+  transform: scale(0.8);
+  animation: zoomIn 0.8s ease forwards;
+  animation-delay: 2.4s;
+}
+
+#entrar-btn:hover {
+  background: #f3e5f5;
+}
+
+@keyframes zoomIn {
+  to { opacity: 1; transform: scale(1); }
+}
+
+#invitacion {
+  display: none;
+}
+
+/* HERO (invitación) */
+.hero {
+  background: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1500&q=80") center/cover no-repeat;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  color: #fff;
   position: relative;
 }
 
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  pointer-events: none;
+}
+
 .hero .overlay {
-  background: rgba(0, 0, 0, 0.6); 
-  color: #fff;
+  position: relative;
+  z-index: 1;
+  background: rgba(0,0,0,0.6);
   padding: 3rem 2rem;
   border-radius: 1.5rem;
+  color: #fff;
 }
 
-/* -------- TÍTULOS HERO -------- */
-.hero .subtitle {
-  font-size: 2.2rem;
-  letter-spacing: 6px;         /* 🔥 más espaciado */
-  font-weight: 600;
-  text-transform: uppercase;
-  color: #f3e5f5;              /* violeta clarito */
-  animation: fadeInDown 1.5s ease-out forwards;
-}
-
-.hero .title {
-  font-family: "Great Vibes", cursive;
-  font-size: 6rem;             /* 🔥 más grande */
-  margin: 1rem 0;
-  color: #fff;                 /* blanco puro */
-  text-shadow: 0 0 15px rgba(255, 215, 0, 0.7), 
-               0 0 30px rgba(255, 215, 0, 0.4); /* brillo dorado */
-  animation: fadeInUp 2s ease-out forwards;
-}
-
-
-.hero .date {
-  font-size: 1.2rem;
-  font-weight: 300;
-}
-
-/* -------- CONTADOR -------- */
-/* -------- CONTADOR -------- */
-
-/* -------- CONTADOR -------- */
-
+/* Contador */
 .contador {
   padding: 2.5rem 1rem;
   background: #fff;
@@ -88,210 +127,358 @@ body {
   box-shadow: 0 4px 12px rgba(106, 27, 154, 0.25);
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  color: #fff !important;   /* 🔥 fuerza todo a blanco */
+  color: white !important;
 }
 
-/* números */
 #countdown div strong {
-  color: #fff !important;   /* 🔥 números blancos */
   font-size: 1.6rem;
   display: block;
 }
 
-/* etiquetas (días, horas, minutos, segundos) */
 #countdown div span {
-  display: block;
   font-size: 0.75rem;
   text-transform: uppercase;
   margin-top: 0.25rem;
   font-weight: 500;
-  color: #fff !important;   /* 🔥 etiquetas blancas */
+  color: white !important;
   opacity: 0.9;
 }
 
-/* efecto hover */
 #countdown div:hover {
-  transform: translateY(-8px);   /* 🔥 se levanta */
+  transform: translateY(-8px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
-
-/* -------- SECCIONES -------- */
+/* Secciones adicionales... */
 section {
   padding: 3rem 1rem;
-  margin-bottom: 1.5rem; /* separa secciones */
+  margin-bottom: 1.5rem;
 }
+.cuando { background: #f8ecf9; }
+.cuando h3, .cuando p { color: #6a1b9a; }
 
-.cuando {
-  background: #f8ecf9; /* violeta suave */
-}
-.cuando h3, .cuando p {
-  color: #6a1b9a;
-}
+.donde { background: #fff; }
+.donde h3, .donde p { color: #333; }
 
-.donde {
-  background: #fff; /* blanco */
-}
-.donde h3, .donde p {
-  color: #333;
-}
+.dresscode { background: #f8ecf9; }
+.dresscode h3, .dresscode p { color: #6a1b9a; }
 
-.dresscode {
-  background: #f8ecf9;
-}
-.dresscode h3, .dresscode p {
-  color: #6a1b9a;
-}
+.regalos { background: #fff; }
+.regalos h3, .regalos p { color: #333; }
 
-.regalos {
-  background: #fff;
-}
-.regalos h3, .regalos p {
-  color: #333;
-}
+.rsvp { background: #f8ecf9; }
+.rsvp h3, .rsvp p { color: #6a1b9a; }
 
-.rsvp {
-  background: #f8ecf9;
-}
-.rsvp h3, .rsvp p {
-  color: #6a1b9a;
-}
-
-h3 {
-  margin-bottom: 1rem;
-  font-size: 1.8rem;
-  font-weight: 600;
-}
-
-/* -------- BOTONES -------- */
+/* Botón común */
 .btn {
   display: inline-block;
   padding: 0.8rem 1.5rem;
   margin-top: 1rem;
   background: #6a1b9a;
-  color: #fff;
+  color: white;
   border-radius: 0.8rem;
   text-decoration: none;
   font-weight: 500;
-  transition: 0.3s ease;
+  transition: background 0.3s;
 }
 
 .btn:hover {
   background: #4a0072;
 }
 
-/* -------- FOOTER -------- */
 footer {
   background: #222;
-  color: #fff;
+  color: white;
   padding: 6rem 1rem;
   text-align: center;
 }
 
 footer p {
-  margin: 0;
   font-family: "Great Vibes", cursive;
   font-size: 3rem;
-  font-weight: normal;
   letter-spacing: 1px;
 }
 
-/* -------- BOTÓN DE MÚSICA -------- */
-.music-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #6a1b9a;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  transition: background 0.3s ease;
-  z-index: 9999;
-}
-
-.music-btn:hover {
-  background: #4a0072;
-}
 
 
 
 
 
-/* -------- PORTADA (mejorado) -------- */
-.portada::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.5); 
-  z-index: 0;              /* 🔥 que quede detrás */
-  pointer-events: none;    /* 🔥 deja pasar clics */
-}
-
-.portada h1 {
-  font-family: "Great Vibes", cursive;
-  font-size: 5rem;
-  z-index: 1;
-  text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
-}
-
-.portada p {
-  font-size: 1.2rem;
-  margin-top: 1rem;
-  z-index: 1;
-}
-
-
-.portada .btn {
-  margin-top: 2rem;
-  z-index: 1;
-}
-
-.hero .overlay {
-  position: relative;
-  z-index: 1; /* el contenido va encima */
-}
 
 
 
-/* -------- TÍTULOS HERO -------- */
-.hero .subtitle {
-  font-size: 2.2rem;
-  letter-spacing: 6px;         /* 🔥 más espaciado */
-  font-weight: 600;
-  text-transform: uppercase;
-  color: #f3e5f5;              /* violeta clarito */
-  animation: fadeInDown 1.5s ease-out forwards;
-}
-
-.hero .title {
-  font-family: "Great Vibes", cursive;
-  font-size: 6rem;             /* 🔥 más grande */
-  margin: 1rem 0;
-  color: #fff;                 /* blanco puro */
-  text-shadow: 0 0 15px rgba(255, 215, 0, 0.7), 
-               0 0 30px rgba(255, 215, 0, 0.4); /* brillo dorado */
-  animation: fadeInUp 2s ease-out forwards;
-}
 
 
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-30px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
 
 
-/* 🚫 Forzar que no aparezcan brillos */
-.hero .overlay::after {
-  content: none !important;
-  display: none !important;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,77 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Invitación Mis XV - Alma</title>
-  <link rel="stylesheet" href="estilotarjeta.css">
+  <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
-  <style>
-    /* --- Portada --- */
-    #portada {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #6a1b9a, #c59fc9);
-      color: white;
-      font-family: "Great Vibes", cursive;
-      text-align: center;
-      z-index: 9999;
-    }
-    #portada h1 {
-      font-size: 3rem;
-      margin-bottom: 2rem;
-    }
-    #portada .btn {
-      padding: 1rem 2rem;
-      background: white;
-      color: #6a1b9a;
-      font-size: 1.5rem;
-      border-radius: 1rem;
-      border: none;
-      cursor: pointer;
-      transition: 0.3s;
-      font-family: "Great Vibes", cursive;
-      text-decoration: none;
-    }
-    #portada .btn:hover {
-      background: #f3e5f5;
-    }
-
-    /* Botón música */
-    #music-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      font-size: 1.5rem;
-      background: white;
-      border: none;
-      border-radius: 50%;
-      width: 50px; height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 1000;
-    }
-  </style>
 </head>
 <body>
 
-  <!-- ✅ Portada con ID -->
+  <!-- PORTADA -->
   <section id="portada">
-    <h1>Mis XV Alma</h1>
-    <p>Quiero que seas parte de este momento</p>
-    <a href="#home" class="btn">Entrar</a>
+    <h1>Mis</h1>
+    <h1>XV</h1>
+    <h1>Alma</h1>
+    <a href="#" class="btn" id="entrar-btn">Entrar</a>
   </section>
 
-  <!-- ✅ Contenido de la invitación -->
-  <div id="invitacion" style="display:none;">
+  <!-- INVITACIÓN -->
+  <div id="invitacion">
     <header class="hero">
       <div class="overlay">
         <h1 class="subtitle">MIS XV</h1>
@@ -88,7 +35,7 @@
         <div><strong id="segundos">00</strong><span>Segundos</span></div>
       </div>
     </section>
-    
+
     <section class="cuando">
       <h3>¿Cuándo?</h3>
       <p>Sábado 22 de Noviembre 21:00 hs - 5hs</p>
@@ -107,7 +54,7 @@
 
     <section class="regalos">
       <h3>Regalos</h3>
-      <p>   <strong>   </strong></p>
+      <p></p>
     </section>
 
     <section class="rsvp">
@@ -120,78 +67,13 @@
     </footer>
   </div>
 
-  <!-- ✅ Audio -->
+  <!-- AUDIO -->
   <audio id="bg-music" loop>
     <source src="alma.mp3" type="audio/mpeg">
     Tu navegador no soporta audio HTML5.
   </audio>
   <button id="music-btn" style="display:none;">▶️</button>
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const portada = document.getElementById("portada");
-    const invitacion = document.getElementById("invitacion");
-    const btnEntrar = document.querySelector("#portada .btn");
-    const musicBtn = document.getElementById("music-btn");
-    const music = document.getElementById("bg-music");
-
-    // 🎵 control música
-    let isPlaying = false;
-    musicBtn.addEventListener("click", () => {
-      if (isPlaying) {
-        music.pause();
-        isPlaying = false;
-        musicBtn.textContent = "▶️";
-      } else {
-        music.play();
-        isPlaying = true;
-        musicBtn.textContent = "⏸️";
-      }
-    });
-
-    // 🚀 botón entrar
-    btnEntrar.addEventListener("click", (e) => {
-      e.preventDefault();
-      portada.style.display = "none";
-      invitacion.style.display = "block";
-      music.play();
-      isPlaying = true;
-      musicBtn.textContent = "⏸️";
-      musicBtn.style.display = "flex";
-    });
-
-    // 🕒 contador
-    const eventDate = new Date("2025-12-20T20:00:00").getTime();
-    const diasEl = document.getElementById("dias");
-    const horasEl = document.getElementById("horas");
-    const minutosEl = document.getElementById("minutos");
-    const segundosEl = document.getElementById("segundos");
-
-    setInterval(() => {
-      const now = new Date().getTime();
-      const diff = eventDate - now;
-
-      if (diff <= 0) {
-        diasEl.textContent = "00";
-        horasEl.textContent = "00";
-        minutosEl.textContent = "00";
-        segundosEl.textContent = "00";
-        return;
-      }
-
-      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const segundos = Math.floor((diff % (1000 * 60)) / 1000);
-
-      diasEl.textContent = dias.toString().padStart(2, "0");
-      horasEl.textContent = horas.toString().padStart(2, "0");
-      minutosEl.textContent = minutos.toString().padStart(2, "0");
-      segundosEl.textContent = segundos.toString().padStart(2, "0");
-    }, 1000);
-  });
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
-
