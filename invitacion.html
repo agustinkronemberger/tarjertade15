@@ -81,22 +81,10 @@
 
     setInterval(actualizarCountdown, 1000);
     actualizarCountdown();
-  </script>
-</body>
-</html>
+      const music = document.getElementById("bg-music");
+   const btn = document.getElementById("music-btn");
 
-<audio id="bg-music" autoplay loop>
-  <source src="cancion.mp3" type="audio/mpeg">
-  Tu navegador no soporta audio HTML5.
-</audio>
-
-<button id="music-btn" class="music-btn">⏸️</button>
-
-<script>
-  const music = document.getElementById("bg-music");
-  const btn = document.getElementById("music-btn");
-
-  btn.addEventListener("click", () => {
+   btn.addEventListener("click", () => {
     if (music.paused) {
       music.play();
       btn.textContent = "⏸️"; // Pausar
@@ -105,5 +93,17 @@
       btn.textContent = "▶️"; // Reproducir
     }
   });
-</script>
+  </script>
+
+ <audio id="bg-music" autoplay loop>
+  <source src="cancion.mp3" type="audio/mpeg">
+  Tu navegador no soporta audio HTML5.
+ </audio>
+ <button id="music-btn" class="music-btn">⏸️</button>
+</body>
+</html>
+
+
+
+
 
